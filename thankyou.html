@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gracias — Instituto Kennedy</title>
+  <meta name="description" content="Gracias por contactar a Instituto Kennedy. Nuestro equipo de admisiones se pondrá en contacto contigo pronto." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Usa el CSS actual del brand -->
+  <link rel="stylesheet" href="/styles.css">
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/assets/favicon-kennedy.png" type="image/x-icon">
+
+
+  <style>
+    body{
+      background:var(--navy);
+      cursor:none;
+    }
+
+    .thankyou-page{
+      min-height:100vh;
+      background:var(--navy);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      padding:150px 0 80px;
+    }
+
+    .thankyou-bg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 580px at 78% 20%, rgba(193,36,35,.24), transparent 60%),
+        radial-gradient(700px 520px at 12% 78%, rgba(255,255,255,.08), transparent 62%),
+        linear-gradient(135deg,#02214D 0%, #061a3c 62%, #0a2a5d 100%);
+      z-index:0;
+    }
+
+    .thankyou-grid-lines{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      opacity:.07;
+      background-image:
+        linear-gradient(to right,#fff 1px,transparent 1px),
+        linear-gradient(to bottom,#fff 1px,transparent 1px);
+      background-size:80px 80px;
+    }
+
+    .thankyou-wrap{
+      position:relative;
+      z-index:2;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 48px;
+      width:100%;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .thankyou-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.14);
+      color:rgba(255,255,255,.82);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:600;
+      margin-bottom:30px;
+    }
+
+    .thankyou-kicker .dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow:0 0 0 0 rgba(193,36,35,.7);
+      animation:pulseDot 1.8s infinite;
+    }
+
+    @keyframes pulseDot{
+      0%{box-shadow:0 0 0 0 rgba(193,36,35,.7)}
+      70%{box-shadow:0 0 0 10px rgba(193,36,35,0)}
+      100%{box-shadow:0 0 0 0 rgba(193,36,35,0)}
+    }
+
+    .thankyou-title{
+      font-family:'Montserrat Alternates',sans-serif;
+      font-size:clamp(3rem,7vw,6.4rem);
+      line-height:.92;
+      letter-spacing:-.04em;
+      font-weight:900;
+      color:#fff;
+      margin-bottom:28px;
+    }
+
+    .thankyou-title em{
+      font-style:normal;
+      color:transparent;
+      -webkit-text-stroke:1.5px rgba(255,255,255,.55);
+    }
+
+    .thankyou-title .red{
+      color:var(--red);
+      -webkit-text-stroke:0;
+    }
+
+    .thankyou-lede{
+      font-size:1.12rem;
+      line-height:1.65;
+      color:rgba(255,255,255,.72);
+      max-width:620px;
+      margin-bottom:16px;
+    }
+
+    .thankyou-lede strong{
+      color:#fff;
+      font-weight:600;
+    }
+
+    .thankyou-sub{
+      font-size:.95rem;
+      line-height:1.7;
+      color:rgba(255,255,255,.52);
+      max-width:560px;
+      margin-bottom:40px;
+    }
+
+    .thankyou-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-bottom:42px;
+    }
+
+    .thankyou-trust{
+      display:flex;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .thankyou-trust span{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:.82rem;
+      color:rgba(255,255,255,.6);
+      font-weight:500;
+    }
+
+    .thankyou-trust span::before{
+      content:"";
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:var(--red);
+      flex-shrink:0;
+    }
+
+    .thankyou-card{
+      position:relative;
+      border-radius:28px;
+      padding:34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.04) 100%);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 28px 80px rgba(0,0,0,.35);
+      backdrop-filter:blur(14px);
+      overflow:hidden;
+    }
+
+    .thankyou-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(360px 240px at 80% 8%, rgba(193,36,35,.22), transparent 65%);
+      pointer-events:none;
+    }
+
+    .card-inner{
+      position:relative;
+      z-index:2;
+    }
+
+    .success-icon{
+      width:82px;
+      height:82px;
+      border-radius:24px;
+      background:rgba(193,36,35,.14);
+      border:1px solid rgba(193,36,35,.32);
+      color:var(--red);
+      display:grid;
+      place-items:center;
+      margin-bottom:28px;
+      box-shadow:0 18px 44px rgba(193,36,35,.22);
+    }
+
+    .thankyou-card h2{
+      font-family:'Montserrat Alternates',sans-serif;
+      font-size:clamp(1.55rem,2.6vw,2.35rem);
+      line-height:1.05;
+      letter-spacing:-.025em;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:14px;
+    }
+
+    .thankyou-card p{
+      font-size:.92rem;
+      line-height:1.65;
+      color:rgba(255,255,255,.62);
+      margin-bottom:28px;
+    }
+
+    .next-steps{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .step-num{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:var(--navy);
+      font-family:'Montserrat Alternates',sans-serif;
+      font-weight:900;
+      font-size:.88rem;
+    }
+
+    .step-text strong{
+      display:block;
+      color:#fff;
+      font-size:.92rem;
+      margin-bottom:3px;
+    }
+
+    .step-text span{
+      display:block;
+      color:rgba(255,255,255,.52);
+      font-size:.78rem;
+      line-height:1.55;
+    }
+
+    .thankyou-footer{
+      background:var(--ink);
+      color:#fff;
+      padding:34px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .thankyou-footer .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .thankyou-footer p,
+    .thankyou-footer a{
+      font-size:.78rem;
+      color:rgba(255,255,255,.42);
+    }
+
+    .thankyou-footer a:hover{
+      color:#fff;
+    }
+
+
+
+    /* Fix navbar logo on thank you page */
+    .thankyou-logo-white,
+    .thankyou-logo-navy{
+      height:42px;
+      width:auto;
+    }
+
+    @media (max-width:980px){
+      .thankyou-wrap{
+        grid-template-columns:1fr;
+        gap:48px;
+        padding:0 28px;
+      }
+
+      .thankyou-page{
+        padding:130px 0 70px;
+      }
+
+      nav.top{
+        padding:18px 28px;
+      }
+
+      .thankyou-card{
+        padding:28px;
+      }
+    }
+
+    @media (max-width:680px){
+      .nav-links{
+        display:none;
+      }
+
+      .thankyou-title{
+        font-size:3.1rem;
+      }
+
+      .thankyou-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .thankyou-actions .btn{
+        width:100%;
+        justify-content:center;
+      }
+
+      .thankyou-trust{
+        gap:14px;
+      }
+
+      .thankyou-footer .container{
+        padding:0 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="progress"></div>
+
+  <!-- NAV -->
+  <nav class="top" id="nav">
+    <a href="/" class="nav-logo" aria-label="Instituto Kennedy">
+      <img class="logo-img logo-white thankyou-logo-white" src="assets/logo-white.svg" alt="Instituto Kennedy">
+      <img class="logo-img logo-navy thankyou-logo-navy" src="assets/logo-navy.svg" alt="">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#modelo">Modelo</a></li>
+      <li><a href="/#niveles">Niveles</a></li>
+      <li><a href="/#comunidad">Comunidad</a></li>
+      <li><a href="/#agenda" class="nav-cta">Agenda tu visita</a></li>
+    </ul>
+  </nav>
+
+  <!-- THANK YOU HERO -->
+  <main class="thankyou-page">
+    <div class="thankyou-bg"></div>
+    <div class="thankyou-grid-lines"></div>
+
+    <section class="thankyou-wrap">
+      <div class="thankyou-copy">
+        <div class="thankyou-kicker">
+          <span class="dot"></span>
+          Solicitud recibida
+        </div>
+
+        <h1 class="thankyou-title">
+          Gracias por <br>
+          confiar en <br>
+          <span class="red">Instituto</span> <em>Kennedy.</em>
+        </h1>
+
+        <p class="thankyou-lede">
+          <strong>Ya recibimos tus datos correctamente.</strong> Nuestro equipo de admisiones revisará tu solicitud y se pondrá en contacto contigo para ayudarte con el siguiente paso.
+        </p>
+
+        <p class="thankyou-sub">
+          Mientras tanto, puedes volver a la página principal, conocer más sobre nuestro modelo bicultural STEAM o escribirnos directamente por WhatsApp.
+        </p>
+
+        <div class="thankyou-actions">
+          <a href="/" class="btn btn-red btn-lg">
+            Volver al inicio
+            <svg class="arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <a href="https://wa.me/525500000000" class="btn btn-ghost-light" target="_blank" rel="noopener">
+            Escribir por WhatsApp
+          </a>
+        </div>
+
+        <div class="thankyou-trust">
+          <span>Respuesta en menos de 24 hrs</span>
+          <span>Atención personalizada</span>
+          <span>Admisiones 2026</span>
+        </div>
+      </div>
+
+      <aside class="thankyou-card" aria-label="Siguientes pasos">
+        <div class="card-inner">
+          <div class="success-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          </div>
+
+          <h2>Tu proceso de admisión ya comenzó.</h2>
+          <p>
+            Estos son los siguientes pasos para que puedas conocer el campus, resolver dudas y evaluar si IK es el lugar ideal para tu familia.
+          </p>
+
+          <div class="next-steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div class="step-text">
+                <strong>Te contactamos</strong>
+                <span>Un asesor de admisiones se comunicará contigo para confirmar tus datos.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">02</div>
+              <div class="step-text">
+                <strong>Agendamos tu visita</strong>
+                <span>Coordinamos fecha y horario para que conozcas el campus y el modelo educativo.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">03</div>
+              <div class="step-text">
+                <strong>Resolvemos tus dudas</strong>
+                <span>Te explicamos niveles, horarios, certificaciones, costos y proceso de inscripción.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <img class="footer-logo logo-img" src="assets/logo-white.svg" alt="Instituto Kennedy">
+        <p class="f-desc">Colegio Bicultural STEAM con más de 40 años formando generaciones biculturales que transforman su entorno.</p>
+        <p class="f-address">Cuautitlán Izcalli<br>Estado de México · México</p>
+      </div>
+      <div class="f-col">
+        <h4>Modelo</h4>
+        <ul>
+          <li><a href="#modelo">Bicultural</a></li>
+          <li><a href="#modelo">Cambridge</a></li>
+          <li><a href="#steam">STEAM</a></li>
+          <li><a href="#modelo">Formación humana</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Niveles</h4>
+        <ul>
+          <li><a href="#niveles">Maternal</a></li>
+          <li><a href="#niveles">Preescolar</a></li>
+          <li><a href="#niveles">Primaria</a></li>
+          <li><a href="#niveles">Secundaria</a></li>
+          <li><a href="#niveles">Preparatoria</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Síguenos</h4>
+        <div class="f-socials">
+          <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+        <p class="f-address" style="margin-top:24px">admisiones@ik.edu.mx<br>+52 55 0000 0000</p>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <p>© 2026 Instituto Kennedy. Todos los derechos reservados.</p>
+      <div style="display:flex;gap:24px"><a href="#">Aviso de privacidad</a><a href="#">Términos</a></div>
+      <a href="http://dinametra.com/" target="_blank" rel="noopener noreferrer">Dinametra.com</a>
+
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
+
+    function onScroll(){
+      const y = window.scrollY;
+      if(nav) nav.classList.toggle('glass', y > 60);
+      const max = document.body.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.max(0, Math.min(1, y / max)) : 0;
+      if(progress) progress.style.width = (pct * 100) + '%';
+    }
+
+    window.addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+
+/* ─── 14. Custom eagle cursor ─── */
+(function(){
+  // Inject cursor elements
+  const cursorEl = document.createElement('div');
+  cursorEl.id = 'ik-cursor';
+  cursorEl.innerHTML = `<svg viewBox="0 0 372 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M153.09 141.02C153.464 141.41 156.145 139.42 156.674 139.059C177.244 125.099 231.362 87.463 231.362 87.463C231.362 87.463 232.056 105.162 230.314 113.823C227.674 126.94 221.488 135.18 211.046 143.042C196.354 154.108 179.393 163.685 165.024 174.98C164.492 175.398 163.998 175.839 163.551 176.352C163.551 176.704 168.422 180.057 169.147 180.573C183.598 190.863 200.223 200.9 213.904 211.874C230.218 224.959 232.846 243.559 231.375 263.517C231.331 264.129 231.195 264.665 231.039 265.244L230.101 265.08L153.86 212.001L153.083 212.483V256.057H119.174L118.886 189.076C118.613 188.626 117.022 188.582 116.506 188.553C101.098 187.748 90.0536 190.626 75.8556 181.961C65.6796 175.75 58.8756 164.291 51.7106 155.075L52.1486 154.33H118.224L104.606 136.416C97.1836 128.166 85.4966 122.12 74.3286 121.375C53.2956 119.971 37.3996 125.584 19.1996 110.905C13.4726 106.287 5.00158 95.3 0.840579 89.016C0.454579 88.433 -0.103427 87.948 0.0165734 87.146H152.608L153.083 87.621V141.02H153.09Z" fill="#C12423"/>
+    <path d="M141.682 70.667C141.349 70.363 143.9 66.972 144.274 66.446C154.143 52.575 166.737 39.819 182.877 33.583C182.949 32.987 182.249 33.361 181.916 33.415C174.136 34.613 165.434 38.441 158.82 42.646L151.506 47.847C154.048 41.787 156.415 35.002 159.806 29.371C161.752 26.1448 164.303 23.7553 167.031 21.2328C157.984 17.2746 151.68 9.8241 149.918 0C153.873 1.4261 157.689 3.3402 161.824 4.4113C177.971 8.5913 193.648 5.2733 209.665 6.6424C216.751 7.2477 222.046 12.3847 224.376 18.8401C231.74 19.0683 240.763 20.3074 245.244 26.8357C248.815 32.036 248.882 37.319 248.153 43.413C247.877 43.743 245.855 41.236 245.453 40.887C238.335 34.758 225.545 38.089 220.449 45.337C216.069 51.567 216.586 57.693 218.915 64.573C219.917 67.527 221.584 70.242 222.446 73.155L193.335 93.481C193.062 84.709 193.914 75.928 196.342 67.495L199.828 56.72C190.419 69.048 186.613 84.37 184.284 99.487L169.563 109.96V77.477C173.55 68.094 178.567 59.338 185.101 51.501C187.133 49.064 189.586 46.953 191.43 44.364C187.852 45.99 184.483 48.547 181.454 51.022C174.776 56.479 168.416 63.34 163.859 70.664H141.676L141.682 70.667ZM223.444 19.0112H202.211C203.054 22.2215 206.962 25.6061 210.292 25.6916C214.2 25.793 216.535 22.7698 219.546 20.9729L223.447 19.0112H223.444Z" fill="#02214D"/>
+    <path d="M248.32 87.146H371.438C371.676 87.349 369.623 89.913 369.347 90.283C357.818 105.536 347.702 119.528 326.612 121.071L245.63 121.055C246.802 117.417 247.895 113.066 248.551 108.1C249.654 99.756 249.15 92.546 248.323 87.149L248.32 87.146Z" fill="#02214D"/>
+    <path d="M319.783 154.647L308.051 170.328C298.506 181.708 286.802 187.853 271.787 188.572C251.562 189.539 230.583 187.809 210.279 188.572C208.431 188.401 203.652 184.697 201.795 183.429C199.276 181.705 194.551 178.793 192.554 176.825C192.25 176.524 191.952 176.416 192.076 175.887L222.971 154.647H319.786H319.783Z" fill="#02214D"/>
+    <path d="M169.569 243.064L223.449 280.307L185.421 329.58L142.318 273.009L169.569 272.378V243.064Z" fill="#02214D"/>
+  </svg>`;
+  const dotEl = document.createElement('div');
+  dotEl.id = 'ik-cursor-dot';
+  document.body.appendChild(cursorEl);
+  document.body.appendChild(dotEl);
+
+  let mx=0, my=0, cx=0, cy=0, raf;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dotEl.style.left = mx+'px';
+    dotEl.style.top  = my+'px';
+    if(!raf) raf = requestAnimationFrame(loop);
+  });
+  document.addEventListener('mouseenter', () => { cursorEl.style.opacity='1'; dotEl.style.opacity='1'; });
+  document.addEventListener('mouseleave', () => { cursorEl.style.opacity='0'; dotEl.style.opacity='0'; });
+  cursorEl.style.opacity = dotEl.style.opacity = '0';
+
+  function loop(){
+    raf = null;
+    cx += (mx - cx) * 0.15;
+    cy += (my - cy) * 0.15;
+    cursorEl.style.left = cx+'px';
+    cursorEl.style.top  = cy+'px';
+    if(Math.abs(mx-cx)>.3 || Math.abs(my-cy)>.3) raf = requestAnimationFrame(loop);
+  }
+
+  document.querySelectorAll('a,button,.btn,.lvl-tab,.event,.cg,.tc,.fc,.bento-cell,.faq-question').forEach(el=>{
+    el.addEventListener('mouseenter', () => { cursorEl.classList.add('cursor-hover'); });
+    el.addEventListener('mouseleave', () => { cursorEl.classList.remove('cursor-hover'); });
+  });
+})();
+  </script>
+
+</body>
+</html>
